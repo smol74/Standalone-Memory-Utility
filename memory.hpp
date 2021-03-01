@@ -34,7 +34,7 @@ public:
         return buffer;
     }
 
-    bool get_process(char* name) {
+    bool set_process(char* name) {
         HANDLE pid = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
         PROCESSENTRY32 entry;
         entry.dwSize = sizeof(entry);
@@ -51,7 +51,7 @@ public:
         return false;
     }
 
-    bool get_process_by_pid(DWORD pid) {
+    bool set_process_by_pid(DWORD pid) {
         m_pid = pid;
         m_process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, m_pid);
         return m_process;
